@@ -54,6 +54,26 @@
   }
 }
 
+/*
+ * D15 — Apparitions au scroll (composant <Reveal>, IntersectionObserver).
+ * L'état caché n'existe que si JavaScript est actif et que l'animation est acceptée :
+ * sans JS ou avec prefers-reduced-motion, le contenu est visible tout de suite.
+ */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(1.5rem);
+    transition:
+      opacity 0.7s ease-out,
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal[data-visible] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
