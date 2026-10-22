@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+/*
+ * D1 — Police : Instrument Sans chargée par next/font (variable --font-instrument-sans, cf. layout.tsx).
+ * D2 — Tokens sémantiques : alias de la palette Tailwind par défaut, rendu identique au site d'origine.
+ */
+@theme inline {
+  --font-sans:
+    var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+
+  /* Accent principal (boutons, liens, sélection, focus) */
+  --color-primary: var(--color-blue-600);
+  --color-primary-strong: var(--color-blue-700);
+  --color-primary-soft: var(--color-blue-200);
+
+  /* Accents sur fonds sombres et fin des dégradés */
+  --color-accent: var(--color-cyan-400);
+  --color-accent-soft: var(--color-cyan-200);
+  --color-accent-end: var(--color-cyan-500);
+
+  /* Fonds et textes */
+  --color-ink: var(--color-slate-950);
+  --color-ink-deep: var(--color-blue-950);
+  --color-surface: var(--color-slate-50);
+  --color-surface-muted: var(--color-slate-100);
+
+  /* États */
+  --color-success: var(--color-emerald-500);
+  --color-demo: var(--color-amber-300);
+  --color-halo: var(--color-indigo-500);
+}
+
+/* D5 — Règles globales (reprises de resources/js/styles/index.css, jamais importé dans l'original) */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    @apply bg-primary text-white;
+  }
+
+  :focus-visible {
+    @apply outline-hidden ring-4 ring-primary-soft ring-offset-2 ring-offset-white;
+  }
+
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
