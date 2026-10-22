@@ -19,8 +19,8 @@ const variants = {
   /** Contour sur fond clair. */
   outline:
     "border border-slate-200 bg-white text-slate-700 hover:-translate-y-0.5 hover:border-primary-soft hover:bg-blue-50 hover:text-primary-strong",
-  /** WhatsApp. */
-  success: "bg-success text-white shadow-lg shadow-emerald-500/20 hover:-translate-y-0.5 hover:bg-emerald-400",
+  /** WhatsApp. emerald-700 et non emerald-500 d'origine : texte blanc lisible (contraste 5,5:1, AA). */
+  success: "bg-emerald-700 text-white shadow-lg shadow-emerald-500/20 hover:-translate-y-0.5 hover:bg-emerald-800",
 } as const;
 
 const sizes = {

@@ -69,7 +69,7 @@ export function Header() {
   }, [isOpen]);
 
   const desktopLink = (active: boolean) =>
-    `rounded-full px-4 py-2 text-sm font-semibold transition duration-300 ${
+    `whitespace-nowrap rounded-full px-3 py-2 text-sm font-semibold transition duration-300 lg:px-4 ${
       active
         ? "bg-ink text-white shadow-lg shadow-slate-950/15"
         : "text-slate-600 hover:bg-surface-muted hover:text-ink"
@@ -136,9 +136,10 @@ export function Header() {
             {header.cvButton}
           </a>
 
+          {/* Masqué entre md et lg : le header déborderait (≈ 850 px pour 768 px). « Contact » reste dans la nav. */}
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-blue-600/20 transition hover:-translate-y-0.5 hover:bg-ink"
+            className="hidden items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-blue-600/20 transition hover:-translate-y-0.5 hover:bg-ink lg:inline-flex"
           >
             {header.cta}
             <Icon name="arrowRightOutline" size={18} />
