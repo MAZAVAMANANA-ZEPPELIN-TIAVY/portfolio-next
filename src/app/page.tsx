@@ -26,7 +26,7 @@ import { contact, cvPath } from "@/data/site";
 
 export default function Home() {
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-clip">
       <section className="relative isolate overflow-hidden bg-ink text-white">
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
           <div className="absolute -left-28 -top-28 h-96 w-96 rounded-full bg-primary/30 blur-3xl" />

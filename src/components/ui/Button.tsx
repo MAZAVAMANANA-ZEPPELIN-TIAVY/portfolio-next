@@ -24,6 +24,7 @@ const variants = {
 const sizes = {
   sm: "px-4 py-2.5 text-sm",
   md: "px-6 py-3 text-sm",
+  base: "px-6 py-3",
   lg: "px-6 py-3.5 text-sm",
   xl: "px-7 py-3.5",
 } as const;
