@@ -67,4 +67,15 @@ export const contactForm = {
   sending: "Envoi en cours...",
   success: "Votre message a bien été envoyé. Merci !",
   error: "L’envoi a échoué. Vous pouvez aussi me contacter par email ou WhatsApp.",
+  invalid: "Certains champs sont à corriger avant l’envoi.",
+  honeypotLabel: "Ne pas remplir ce champ",
+  validation: {
+    name: "Indiquez votre nom (2 caractères minimum).",
+    email: "Indiquez une adresse email valide.",
+    phone: "Ce numéro ne semble pas valide.",
+    projectType: "Choisissez un type de projet.",
+    budget: "Choisissez un budget dans la liste.",
+    message: "Décrivez votre besoin en quelques mots (10 caractères minimum).",
+    tooLong: "Ce texte est trop long.",
+  },
 } as const;
