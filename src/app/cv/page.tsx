@@ -6,6 +6,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { CtaBand } from "@/components/ui/CtaBand";
 import { Icon } from "@/components/ui/Icon";
 import { IconCard } from "@/components/ui/IconCard";
+import { Reveal } from "@/components/ui/Reveal";
 import {
   cvContactCards,
   cvCta,
@@ -163,12 +164,14 @@ export default function CurriculumVitaePage() {
           </div>
         </div>
 
-        <CtaBand tone="night" size="md" eyebrow={cvCta.eyebrow} title={cvCta.title} description={cvCta.description} className="mt-8">
-          <ButtonLink href="/contact" variant="white" size="base">
-            {cvCta.button}
-            <Icon name="arrowRight" />
-          </ButtonLink>
-        </CtaBand>
+        <Reveal className="mt-8">
+          <CtaBand tone="night" size="md" eyebrow={cvCta.eyebrow} title={cvCta.title} description={cvCta.description}>
+            <ButtonLink href="/contact" variant="white" size="base">
+              {cvCta.button}
+              <Icon name="arrowRight" />
+            </ButtonLink>
+          </CtaBand>
+        </Reveal>
       </div>
     </div>
   );
@@ -177,20 +180,19 @@ export default function CurriculumVitaePage() {
 /** Carte d'une section du CV, cible d'ancre (D11). */
 function Card({ section, children }: { section: CvSection; children: ReactNode }) {
   return (
-    <section
-      id={section.id}
-      aria-labelledby={`${section.id}-title`}
-      className="scroll-mt-40 rounded-[1.75rem] border border-slate-200 bg-white/95 p-5 shadow-sm backdrop-blur transition hover:-translate-y-1 hover:shadow-xl sm:p-8"
-    >
-      <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-primary shadow-sm">
-        <Icon name={section.icon} />
+    // Reveal = simple enveloppe : la carte garde ses propres transitions de survol.
+    <Reveal as="section" id={section.id} aria-labelledby={`${section.id}-title`} className="scroll-mt-40">
+      <div className="h-full rounded-[1.75rem] border border-slate-200 bg-white/95 p-5 shadow-sm backdrop-blur transition hover:-translate-y-1 hover:shadow-xl sm:p-8">
+        <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-primary shadow-sm">
+          <Icon name={section.icon} />
+        </div>
+        <h2 id={`${section.id}-title`} className="text-2xl font-black tracking-tight text-ink sm:text-3xl">
+          {section.title}
+        </h2>
+        <p className="mt-2 text-sm leading-6 text-slate-500">{section.subtitle}</p>
+        {children}
       </div>
-      <h2 id={`${section.id}-title`} className="text-2xl font-black tracking-tight text-ink sm:text-3xl">
-        {section.title}
-      </h2>
-      <p className="mt-2 text-sm leading-6 text-slate-500">{section.subtitle}</p>
-      {children}
-    </section>
+    </Reveal>
   );
 }
 

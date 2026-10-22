@@ -6,6 +6,7 @@ import { BackgroundDecor } from "@/components/ui/BackgroundDecor";
 import { Badge } from "@/components/ui/Badge";
 import { ButtonLink } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
+import { Reveal } from "@/components/ui/Reveal";
 import { getAdjacentProjects, getProjectBySlug, projectDetail, projects } from "@/data/projects";
 import { pageMetadata } from "@/lib/metadata";
 
@@ -153,10 +154,12 @@ export default async function ProjectPage({ params }: PageProps<"/projets/[slug]
         </div>
 
         {/* D12 : projet précédent / suivant (en boucle). */}
-        <nav aria-label="Autres projets" className="mt-12 grid gap-4 sm:grid-cols-2">
-          <AdjacentLink direction="previous" slug={previous.slug} title={previous.title} />
-          <AdjacentLink direction="next" slug={next.slug} title={next.title} />
-        </nav>
+        <Reveal>
+          <nav aria-label="Autres projets" className="mt-12 grid gap-4 sm:grid-cols-2">
+            <AdjacentLink direction="previous" slug={previous.slug} title={previous.title} />
+            <AdjacentLink direction="next" slug={next.slug} title={next.title} />
+          </nav>
+        </Reveal>
       </section>
     </div>
   );

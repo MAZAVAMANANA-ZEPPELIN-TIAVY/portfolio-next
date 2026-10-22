@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState, type TouchEvent } from "react";
 import { createPortal } from "react-dom";
 import { Icon } from "@/components/ui/Icon";
+import { Reveal } from "@/components/ui/Reveal";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { projectDetail, type ProjectImage } from "@/data/projects";
 
@@ -36,7 +37,7 @@ export function ProjectGallery({ title, images }: ProjectGalleryProps) {
     <>
       <ul className="grid gap-5 sm:grid-cols-2">
         {images.map((image, index) => (
-          <li key={image.src} className={index === 0 ? "sm:col-span-2" : ""}>
+          <Reveal as="li" key={image.src} delay={index === 0 ? 0 : ((index - 1) % 2) * 100} className={index === 0 ? "sm:col-span-2" : ""}>
             <button
               ref={(element) => {
                 triggers.current[index] = element;
@@ -63,7 +64,7 @@ export function ProjectGallery({ title, images }: ProjectGalleryProps) {
                 <Icon name="expand" />
               </span>
             </button>
-          </li>
+          </Reveal>
         ))}
       </ul>
 

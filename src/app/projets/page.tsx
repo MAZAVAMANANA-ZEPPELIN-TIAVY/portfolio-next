@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/Badge";
 import { ButtonLink } from "@/components/ui/Button";
 import { CtaBand } from "@/components/ui/CtaBand";
 import { Icon } from "@/components/ui/Icon";
+import { Reveal } from "@/components/ui/Reveal";
 import { projectCategories, projects, projectsPage } from "@/data/projects";
 import { seo } from "@/data/site";
 import { pageMetadata } from "@/lib/metadata";
@@ -53,19 +54,21 @@ export default function ProjectsPage() {
           <ProjectsExplorer />
         </Suspense>
 
-        <CtaBand
-          tone="night"
-          size="md"
-          eyebrow={projectsPage.cta.eyebrow}
-          title={projectsPage.cta.title}
-          description={projectsPage.cta.description}
-          className="mt-14 py-12"
-        >
-          <ButtonLink href="/contact" variant="white" size="base">
-            {projectsPage.cta.button}
-            <Icon name="arrowRight" />
-          </ButtonLink>
-        </CtaBand>
+        <Reveal className="mt-14">
+          <CtaBand
+            tone="night"
+            size="md"
+            eyebrow={projectsPage.cta.eyebrow}
+            title={projectsPage.cta.title}
+            description={projectsPage.cta.description}
+            className="py-12"
+          >
+            <ButtonLink href="/contact" variant="white" size="base">
+              {projectsPage.cta.button}
+              <Icon name="arrowRight" />
+            </ButtonLink>
+          </CtaBand>
+        </Reveal>
       </section>
     </div>
   );
