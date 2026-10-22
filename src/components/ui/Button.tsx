@@ -6,6 +6,8 @@ const variants = {
   primary: "bg-primary text-white shadow-lg shadow-blue-600/20 hover:-translate-y-0.5 hover:bg-ink",
   /** Bleu, survol plus clair (hero sombre). */
   primaryBright: "bg-primary text-white shadow-xl shadow-blue-600/25 hover:-translate-y-0.5 hover:bg-blue-500",
+  /** Sombre, survol bleu (fond clair). */
+  dark: "bg-ink text-white shadow-md transition hover:-translate-y-0.5 hover:bg-primary",
   /** Blanc sur fond coloré ou sombre. */
   white: "bg-white text-ink hover:-translate-y-0.5 hover:bg-cyan-100",
   /** Verre dépoli sur fond sombre. */

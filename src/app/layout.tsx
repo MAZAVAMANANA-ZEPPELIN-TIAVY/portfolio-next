@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   description: site.description,
   authors: [{ name: site.fullName }],
   creator: site.fullName,
+  // Valeurs par défaut (404…) ; chaque page les remplace via pageMetadata (src/lib/metadata.ts).
+  openGraph: { type: "website", locale: "fr_FR", siteName: site.name },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

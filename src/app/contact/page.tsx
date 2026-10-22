@@ -5,7 +5,10 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { SocialLinks } from "@/components/ui/SocialLinks";
 import { contactAside, contactForm, contactHero, contactInfos } from "@/data/contact";
-import { contact } from "@/data/site";
+import { contact, seo } from "@/data/site";
+import { pageMetadata } from "@/lib/metadata";
+
+export const metadata = pageMetadata({ ...seo.contact, path: "/contact" });
 
 export default function ContactPage() {
   return (

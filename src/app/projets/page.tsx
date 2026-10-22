@@ -6,6 +6,10 @@ import { ButtonLink } from "@/components/ui/Button";
 import { CtaBand } from "@/components/ui/CtaBand";
 import { Icon } from "@/components/ui/Icon";
 import { projectCategories, projects, projectsPage } from "@/data/projects";
+import { seo } from "@/data/site";
+import { pageMetadata } from "@/lib/metadata";
+
+export const metadata = pageMetadata({ ...seo.projects, path: "/projets" });
 
 export default function ProjectsPage() {
   const featuredCount = projects.filter((project) => project.featured).length;

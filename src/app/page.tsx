@@ -22,11 +22,35 @@ import {
   stats,
 } from "@/data/home";
 import { featuredProjects, projects, realizedProjectsCount } from "@/data/projects";
-import { contact, cvPath } from "@/data/site";
+import { contact, cvPath, seo, site, siteUrl, socials } from "@/data/site";
+import { pageMetadata } from "@/lib/metadata";
+
+export const metadata = pageMetadata({ description: seo.home.description, path: "/" });
+
+/** D17 — Données structurées schema.org/Person. */
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.fullName,
+  alternateName: site.name,
+  jobTitle: site.jobTitle,
+  description: site.description,
+  url: siteUrl,
+  image: `${siteUrl}${hero.photo.src}`,
+  email: `mailto:${contact.email}`,
+  telephone: contact.phoneHref.replace("tel:", ""),
+  address: { "@type": "PostalAddress", addressLocality: "Antsiranana", addressCountry: "MG" },
+  sameAs: socials.map((social) => social.href),
+  knowsAbout: ["React", "Laravel", "Tailwind CSS", "MySQL", "PHP", "JavaScript"],
+};
 
 export default function Home() {
   return (
     <div className="overflow-clip">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd).replace(/</g, "\\u003c") }}
+      />
       <section className="relative isolate overflow-hidden bg-ink text-white">
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
           <div className="absolute -left-28 -top-28 h-96 w-96 rounded-full bg-primary/30 blur-3xl" />

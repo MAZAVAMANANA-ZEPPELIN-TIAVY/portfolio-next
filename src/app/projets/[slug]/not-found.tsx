@@ -10,7 +10,7 @@ export default function ProjectNotFound() {
         <p className="text-sm font-bold uppercase tracking-[0.2em] text-red-600">{projectDetail.notFound.eyebrow}</p>
         <h1 className="mt-3 text-3xl font-black text-ink">{projectDetail.notFound.title}</h1>
         <p className="mt-4 text-slate-600">{projectDetail.notFound.text}</p>
-        <ButtonLink href="/projets" variant="primary" size="base" className="mt-7 bg-ink hover:bg-primary">
+        <ButtonLink href="/projets" variant="dark" size="base" className="mt-7">
           <Icon name="arrowLeft" />
           {projectDetail.notFound.back}
         </ButtonLink>

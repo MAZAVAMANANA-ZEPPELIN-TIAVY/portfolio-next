@@ -53,6 +53,39 @@ export const navItems: NavItem[] = [
   { name: "Contact", path: "/contact" },
 ];
 
+/**
+ * D17 — Titres courts (modèle « Titre | Zeppélin Tiavy ») et descriptions des pages.
+ * Les pages projet utilisent le titre et la description courte du projet.
+ */
+export const seo = {
+  home: { description: site.description },
+  cv: {
+    title: "Curriculum vitæ",
+    description:
+      "Parcours, expériences, compétences et langues de Zeppélin Tiavy, développeur web full-stack à Antsiranana, Madagascar.",
+  },
+  projects: {
+    title: "Projets",
+    description:
+      "Applications de gestion, commerce en ligne, tourisme, location automobile et éducation : les réalisations web de Zeppélin Tiavy.",
+  },
+  contact: {
+    title: "Contact",
+    description:
+      "Décrivez votre activité, le problème à résoudre ou le site que vous souhaitez créer : formulaire, email ou WhatsApp.",
+  },
+  notFound: { title: "Page introuvable" },
+} as const;
+
+/** Page 404 du site (D14). */
+export const notFoundPage = {
+  eyebrow: "Erreur 404",
+  title: "Page introuvable",
+  description: "La page que vous cherchez n’existe pas ou a été déplacée.",
+  home: "Retour à l’accueil",
+  projects: "Voir mes projets",
+} as const;
+
 /** Textes du header (bouton et menu mobile). */
 export const header = {
   cvButton: "CV",

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ProjectGallery } from "@/components/projects/ProjectGallery";
@@ -6,9 +7,17 @@ import { Badge } from "@/components/ui/Badge";
 import { ButtonLink } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { getAdjacentProjects, getProjectBySlug, projectDetail, projects } from "@/data/projects";
+import { pageMetadata } from "@/lib/metadata";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
+}
+
+export async function generateMetadata({ params }: PageProps<"/projets/[slug]">): Promise<Metadata> {
+  const { slug } = await params;
+  const project = getProjectBySlug(slug);
+  if (!project) return { title: projectDetail.notFound.title };
+  return pageMetadata({ title: project.title, description: project.shortDescription, path: `/projets/${project.slug}` });
 }
 
 export default async function ProjectPage({ params }: PageProps<"/projets/[slug]">) {

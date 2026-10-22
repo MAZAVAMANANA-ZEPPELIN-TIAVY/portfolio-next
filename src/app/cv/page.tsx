@@ -22,7 +22,10 @@ import {
   type TimelineEntry,
 } from "@/data/cv";
 import type { IconName } from "@/data/icons";
-import { cvPath } from "@/data/site";
+import { cvPath, seo } from "@/data/site";
+import { pageMetadata } from "@/lib/metadata";
+
+export const metadata = pageMetadata({ ...seo.cv, path: "/cv" });
 
 export default function CurriculumVitaePage() {
   return (
