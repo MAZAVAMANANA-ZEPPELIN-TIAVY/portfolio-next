@@ -14,6 +14,11 @@ export type IconName =
   | "checkCircle"
   | "paperPlane"
   | "layerGroup"
+  // Projets
+  | "folderOpen"
+  | "check"
+  | "externalLink"
+  | "images"
   // Contact et réseaux
   | "email"
   | "emailOutline"

@@ -7,6 +7,8 @@ const variants = {
   hero: "border border-white/10 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-accent-soft backdrop-blur",
   /** Catégorie posée sur une image. */
   category: "bg-white/95 px-3 py-1 text-xs font-bold text-slate-800 shadow",
+  /** Statut d'un projet (« Projet réalisé »). */
+  status: "bg-emerald-300 px-3 py-1 text-xs font-bold text-emerald-950 shadow",
   /** Projet de démonstration. */
   demo: "bg-demo px-3 py-1 text-xs font-bold text-amber-950 shadow",
   /** Technologie sur fond clair. */

@@ -152,3 +152,39 @@ export const realizedProjectsCount = projects.filter((project) => !project.isDem
 
 /** Catégories uniques, dans l'ordre d'apparition. */
 export const projectCategories = [...new Set(projects.map((project) => project.category))];
+
+/** Valeur d'URL d'une catégorie (`?categorie=site-touristique`). */
+export function categorySlug(category: string) {
+  return category
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+/** Textes de la page /projets. */
+export const projectsPage = {
+  badge: "Réalisations",
+  title: "Des solutions web conçues pour des besoins concrets",
+  description:
+    "Applications de gestion, commerce en ligne, tourisme, location automobile et éducation : chaque projet associe une interface moderne, une expérience responsive et une logique métier adaptée.",
+  stats: {
+    projects: "projets réalisés",
+    categories: "domaines couverts",
+    featured: "projets mis en avant",
+  },
+  filterTitle: "Filtrer les projets",
+  filterDescription: "Sélectionnez une catégorie pour afficher les réalisations correspondantes.",
+  allCategories: "Tous",
+  viewProject: "Voir le projet",
+  liveSite: "Site en ligne",
+  similarProject: "Projet similaire",
+  cta: {
+    eyebrow: "Un besoin particulier ?",
+    title: "Transformons votre besoin en une solution web professionnelle",
+    description:
+      "Site vitrine, application métier, plateforme de réservation, e-commerce ou système de gestion : discutons de votre projet.",
+    button: "Présenter mon projet",
+  },
+} as const;
