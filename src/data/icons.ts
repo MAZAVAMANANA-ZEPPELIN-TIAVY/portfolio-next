@@ -19,6 +19,11 @@ export type IconName =
   | "check"
   | "externalLink"
   | "images"
+  | "arrowLeft"
+  | "chevronLeft"
+  | "chevronRight"
+  | "expand"
+  | "times"
   // Contact et réseaux
   | "email"
   | "emailOutline"

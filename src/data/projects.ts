@@ -1,3 +1,6 @@
+/** Capture d'écran avec ses dimensions réelles (next/image). */
+export type ProjectImage = { src: string; width: number; height: number };
+
 export type Project = {
   slug: string;
   title: string;
@@ -17,7 +20,7 @@ export type Project = {
   githubLink?: string;
   stack: string[];
   highlights: string[];
-  images: string[];
+  images: ProjectImage[];
 };
 
 export const projects: Project[] = [
@@ -43,12 +46,12 @@ export const projects: Project[] = [
       "Mise en valeur des offres touristiques",
     ],
     images: [
-      "/images/projets/obayaMada/c1.webp",
-      "/images/projets/obayaMada/c2.webp",
-      "/images/projets/obayaMada/c3.webp",
-      "/images/projets/obayaMada/c4.webp",
-      "/images/projets/obayaMada/c5.webp",
-      "/images/projets/obayaMada/c6.webp",
+      { src: "/images/projets/obayaMada/c1.webp", width: 1338, height: 631 },
+      { src: "/images/projets/obayaMada/c2.webp", width: 1329, height: 631 },
+      { src: "/images/projets/obayaMada/c3.webp", width: 1336, height: 633 },
+      { src: "/images/projets/obayaMada/c4.webp", width: 1337, height: 637 },
+      { src: "/images/projets/obayaMada/c5.webp", width: 1332, height: 635 },
+      { src: "/images/projets/obayaMada/c6.webp", width: 1329, height: 624 },
     ],
   },
   {
@@ -74,10 +77,10 @@ export const projects: Project[] = [
       "Gestion et suivi du stock",
     ],
     images: [
-      "/images/projets/maboutique/c1.webp",
-      "/images/projets/maboutique/c2.webp",
-      "/images/projets/maboutique/c3.webp",
-      "/images/projets/maboutique/c4.webp",
+      { src: "/images/projets/maboutique/c1.webp", width: 1344, height: 633 },
+      { src: "/images/projets/maboutique/c2.webp", width: 1354, height: 621 },
+      { src: "/images/projets/maboutique/c3.webp", width: 1352, height: 637 },
+      { src: "/images/projets/maboutique/c4.webp", width: 1346, height: 636 },
     ],
   },
   {
@@ -103,10 +106,10 @@ export const projects: Project[] = [
       "Formulaire de contact intégré",
     ],
     images: [
-      "/images/projets/autoloc/c1.webp",
-      "/images/projets/autoloc/c2.webp",
-      "/images/projets/autoloc/c3.webp",
-      "/images/projets/autoloc/c4.webp",
+      { src: "/images/projets/autoloc/c1.webp", width: 1341, height: 628 },
+      { src: "/images/projets/autoloc/c2.webp", width: 1341, height: 623 },
+      { src: "/images/projets/autoloc/c3.webp", width: 1298, height: 608 },
+      { src: "/images/projets/autoloc/c4.webp", width: 1321, height: 641 },
     ],
   },
   {
@@ -132,10 +135,10 @@ export const projects: Project[] = [
       "Authentification et accès sécurisés",
     ],
     images: [
-      "/images/projets/ape/c1.webp",
-      "/images/projets/ape/c2.webp",
-      "/images/projets/ape/c3.webp",
-      "/images/projets/ape/c4.webp",
+      { src: "/images/projets/ape/c1.webp", width: 1297, height: 638 },
+      { src: "/images/projets/ape/c2.webp", width: 1271, height: 638 },
+      { src: "/images/projets/ape/c3.webp", width: 1308, height: 635 },
+      { src: "/images/projets/ape/c4.webp", width: 1295, height: 634 },
     ],
   },
 ];
@@ -152,6 +155,57 @@ export const realizedProjectsCount = projects.filter((project) => !project.isDem
 
 /** Catégories uniques, dans l'ordre d'apparition. */
 export const projectCategories = [...new Set(projects.map((project) => project.category))];
+
+/** Projets précédent et suivant (en boucle), pour la navigation en bas de page (D12). */
+export function getAdjacentProjects(slug: string) {
+  const index = projects.findIndex((project) => project.slug === slug);
+  const count = projects.length;
+  return {
+    previous: projects[(index - 1 + count) % count]!,
+    next: projects[(index + 1) % count]!,
+  };
+}
+
+/** Textes de la page /projets/[slug]. */
+export const projectDetail = {
+  demoBadge: "Projet démonstration",
+  allProjects: "Tous les projets",
+  viewSite: "Voir le site",
+  sourceCode: "Code source",
+  info: {
+    client: "Client / type",
+    year: "Année",
+    role: "Mon rôle",
+    gallery: "Galerie",
+    capture: "capture",
+    captures: "captures",
+  },
+  highlightsEyebrow: "Points clés",
+  highlightsTitle: "Ce que présente ce projet",
+  similarTitle: "Vous avez un besoin similaire ?",
+  similarText: "Je peux adapter cette logique à votre activité, vos utilisateurs et vos objectifs.",
+  similarLink: "Discuter du projet",
+  galleryEyebrow: "Aperçu",
+  galleryTitle: "Captures du projet",
+  galleryHint: "Cliquez sur une image pour l’agrandir",
+  captureLabel: "Capture",
+  galleryEmpty: "Les captures seront ajoutées prochainement.",
+  lightbox: {
+    label: "Aperçu de",
+    close: "Fermer l’aperçu",
+    previous: "Image précédente",
+    next: "Image suivante",
+    thumbnails: "Miniatures",
+  },
+  previousProject: "Projet précédent",
+  nextProject: "Projet suivant",
+  notFound: {
+    eyebrow: "Erreur 404",
+    title: "Projet introuvable",
+    text: "Le projet demandé n’existe pas ou n’est plus disponible.",
+    back: "Retour aux projets",
+  },
+} as const;
 
 /** Valeur d'URL d'une catégorie (`?categorie=site-touristique`). */
 export function categorySlug(category: string) {
