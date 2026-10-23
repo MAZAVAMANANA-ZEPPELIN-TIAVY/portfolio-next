@@ -60,7 +60,7 @@ Tous les textes, liens et projets sont dans `src/data/` ; les pages ne contienne
 | `icons.ts` | liste des noms d'icônes autorisés |
 
 - **Icônes** : les données utilisent des noms (`icon: "whatsapp"`). Pour une nouvelle icône, ajoutez le nom dans `src/data/icons.ts` puis l'icône react-icons correspondante dans `src/components/ui/Icon.tsx` (le build échoue si l'une des deux manque).
-- **Nouveau projet** : ajoutez un objet dans `projects` (`projects.ts`) et ses captures dans `public/images/projets/<dossier>/` (WebP conseillé, `width`/`height` = dimensions réelles). La page `/projets/<slug>`, le filtre, le sitemap et la navigation précédent/suivant se mettent à jour seuls. Champs facultatifs : `liveLink`, `githubLink` (bouton « Code source »), `isDemo` (badge « Démonstration »).
+- **Nouveau projet** : ajoutez un objet dans `projects` (`projects.ts`) et ses captures dans `public/images/projets/<dossier>/` (WebP conseillé, `width`/`height` = dimensions réelles). La page `/projets/<slug>`, le filtre, le sitemap et la navigation précédent/suivant se mettent à jour seuls. Champs facultatifs : `githubLink` (bouton « Code source »), `isDemo` (badge « Démonstration »). Aucun lien vers le site en ligne d'un projet n'est affiché (choix du 2026-10-23).
 - **CV PDF** : remplacez `public/cv/MAZAVAMANANA_Zeppelin_Tiavy_CV.pdf` (même nom, ou changez `cvPath` dans `site.ts`).
 
 ## Structure

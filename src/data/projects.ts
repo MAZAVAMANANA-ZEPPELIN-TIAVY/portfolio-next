@@ -15,7 +15,6 @@ export type Project = {
   shortDescription: string;
   description: string;
   image: string;
-  liveLink?: string;
   /** Affiché seulement s'il est rempli (Q6). */
   githubLink?: string;
   stack: string[];
@@ -38,7 +37,6 @@ export const projects: Project[] = [
     description:
       "Site touristique moderne conçu pour mettre en valeur les destinations, les circuits, les offres et les services d’ObayaMadaTour. Le design a été pensé pour inspirer confiance, faciliter la découverte des offres et offrir une navigation fluide sur mobile comme sur ordinateur.",
     image: "/images/projets/obayaMada/c1.webp",
-    liveLink: "https://obayamadatour.msi2025a.net/",
     stack: ["Laravel", "React", "Tailwind CSS"],
     highlights: [
       "Présentation immersive des destinations",
@@ -68,7 +66,6 @@ export const projects: Project[] = [
     description:
       "MaBoutique est une application de commerce électronique conçue pour une boutique de téléphones. Elle permet aux visiteurs de consulter les appareils disponibles, rechercher un produit, afficher ses détails, constituer un panier et envoyer une réservation. L’interface met également en avant la disponibilité et le niveau de stock de chaque téléphone.",
     image: "/images/projets/maboutique/c1.webp",
-    liveLink: "https://tsarak.msi2025a.net/",
     stack: ["Laravel", "React", "Tailwind CSS", "MySQL"],
     highlights: [
       "Catalogue de téléphones avec recherche",
@@ -97,7 +94,6 @@ export const projects: Project[] = [
     description:
       "AutoLoc est une plateforme de location de voitures destinée aux clients de Nosy Be. Le site présente les véhicules disponibles, leurs catégories et leurs tarifs, tout en mettant en avant la fiabilité du service. Un parcours clair permet au visiteur de consulter l’offre, demander des informations et préparer rapidement sa réservation.",
     image: "/images/projets/autoloc/c1.webp",
-    liveLink: "https://location-des-voitures.msi2025a.net/",
     stack: ["Laravel", "React", "Tailwind CSS", "MySQL"],
     highlights: [
       "Catalogue responsive des véhicules",
@@ -126,7 +122,6 @@ export const projects: Project[] = [
     description:
       "L’ERP scolaire A.P.E. est une plateforme conçue pour moderniser la gestion du lycée privé A.P.E. Elle centralise les principales opérations administratives et pédagogiques : dossiers des élèves, classes, notes, présences, enseignants, statistiques et accès sécurisés selon les profils utilisateurs.",
     image: "/images/projets/ape/c1.webp",
-    liveLink: "https://ape.msi2025a.net/",
     stack: ["Laravel", "React", "Tailwind CSS", "MySQL"],
     highlights: [
       "Gestion centralisée des élèves et des classes",
@@ -170,7 +165,6 @@ export function getAdjacentProjects(slug: string) {
 export const projectDetail = {
   demoBadge: "Projet démonstration",
   allProjects: "Tous les projets",
-  viewSite: "Voir le site",
   sourceCode: "Code source",
   info: {
     client: "Client / type",
@@ -229,5 +223,4 @@ export const projectsPage = {
   filterDescription: "Sélectionnez une catégorie pour afficher les réalisations correspondantes.",
   allCategories: "Tous",
   viewProject: "Voir le projet",
-  liveSite: "Site en ligne",
 } as const;

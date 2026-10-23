@@ -16,7 +16,6 @@ export type IconName =
   // Projets
   | "folderOpen"
   | "check"
-  | "externalLink"
   | "images"
   | "arrowLeft"
   | "chevronLeft"

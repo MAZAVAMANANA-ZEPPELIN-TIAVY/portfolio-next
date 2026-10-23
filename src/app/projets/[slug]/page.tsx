@@ -78,14 +78,6 @@ export default async function ProjectPage({ params }: PageProps<"/projets/[slug]
                 {projectDetail.allProjects}
               </ButtonLink>
 
-              {project.liveLink && (
-                <ButtonLink href={project.liveLink} external variant="white" size="base">
-                  {projectDetail.viewSite}
-                  <span className="sr-only"> (nouvel onglet)</span>
-                  <Icon name="externalLink" />
-                </ButtonLink>
-              )}
-
               {/* Q6 : affiché seulement si le lien est rempli. */}
               {project.githubLink && (
                 <ButtonLink href={project.githubLink} external variant="glass" size="base">
