@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/Badge";
 import { ButtonLink } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
-import { getAdjacentProjects, getProjectBySlug, projectDetail, projects } from "@/data/projects";
+import { formatProjectYear, getAdjacentProjects, getProjectBySlug, projectDetail, projects } from "@/data/projects";
 import { pageMetadata } from "@/lib/metadata";
 
 export function generateStaticParams() {
@@ -30,7 +30,7 @@ export default async function ProjectPage({ params }: PageProps<"/projets/[slug]
   const imageCount = project.images.length;
   const info = [
     { label: projectDetail.info.client, value: project.client },
-    { label: projectDetail.info.year, value: project.year },
+    { label: projectDetail.info.year, value: formatProjectYear(project.period) },
     { label: projectDetail.info.role, value: project.role },
     {
       label: projectDetail.info.gallery,

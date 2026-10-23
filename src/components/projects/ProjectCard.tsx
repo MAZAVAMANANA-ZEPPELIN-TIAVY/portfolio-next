@@ -3,7 +3,7 @@ import type { CSSProperties } from "react";
 import { Badge } from "@/components/ui/Badge";
 import { Icon } from "@/components/ui/Icon";
 import { SafeImage } from "@/components/ui/SafeImage";
-import { projectsPage, type Project } from "@/data/projects";
+import { formatProjectYear, projectsPage, type Project } from "@/data/projects";
 
 type ProjectCardProps = {
   project: Project;
@@ -35,7 +35,7 @@ export function ProjectCard({ project, className = "", style }: ProjectCardProps
 
         <div className="absolute bottom-5 left-5 right-5">
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent-soft">
-            {project.client} • {project.year}
+            {project.client} • {formatProjectYear(project.period)}
           </p>
           <h2 className="mt-2 text-2xl font-black text-white">{project.title}</h2>
         </div>

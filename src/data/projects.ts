@@ -8,9 +8,7 @@ export type Project = {
   slug: string;
   title: string;
   category: string;
-  /** Année affichée (cartes, page détail) : doit correspondre à `period`. */
-  year: string;
-  /** Section Expérience du CV (libellé et tri du plus récent au plus ancien). */
+  /** Seule date à maintenir : année affichée, libellé et tri de la section Expérience du CV en sont déduits. */
   period: ProjectPeriod;
   client: string;
   role: string;
@@ -33,7 +31,6 @@ export const projects: Project[] = [
     slug: "obayamadatour",
     title: "ObayaMadaTour",
     category: "Site touristique",
-    year: "2026",
     period: { start: "2026-02" },
     client: "ObayaMadaTour",
     role: "Conception et développement",
@@ -63,7 +60,6 @@ export const projects: Project[] = [
     slug: "maboutique",
     title: "MaBoutique",
     category: "E-commerce",
-    year: "2026",
     period: { start: "2026-03", end: "2026-04" },
     client: "Boutique de téléphones",
     role: "Conception et développement full-stack",
@@ -92,7 +88,6 @@ export const projects: Project[] = [
     slug: "autoloc",
     title: "AutoLoc",
     category: "Location de voitures",
-    year: "2026",
     period: { start: "2026-05" },
     client: "AutoLoc Nosy Be",
     role: "Conception et développement full-stack",
@@ -121,7 +116,6 @@ export const projects: Project[] = [
     slug: "erp-scolaire-ape",
     title: "ERP scolaire A.P.E.",
     category: "Plateforme éducative",
-    year: "2026",
     period: { start: "2026-06", end: "2026-07" },
     client: "Lycée privé A.P.E.",
     role: "Architecture et développement full-stack",
@@ -184,6 +178,13 @@ function formatMonth(value: string) {
 /** « Février 2026 » ou « Mars 2026 – Avril 2026 » (même format que le stage du CV). */
 export function formatProjectPeriod({ start, end }: ProjectPeriod) {
   return end && end !== start ? `${formatMonth(start)} – ${formatMonth(end)}` : formatMonth(start);
+}
+
+/** Année affichée (cartes, page détail) : « 2026 », ou « 2025 – 2026 » si la période change d'année. */
+export function formatProjectYear({ start, end }: ProjectPeriod) {
+  const startYear = start.slice(0, 4);
+  const endYear = (end ?? start).slice(0, 4);
+  return startYear === endYear ? startYear : `${startYear} – ${endYear}`;
 }
 
 /** Projets du plus récent au plus ancien (fin de période, puis début), pour la section Expérience du CV. */
