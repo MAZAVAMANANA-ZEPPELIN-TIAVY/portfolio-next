@@ -214,7 +214,7 @@ function Timeline({ icon, entries }: { icon: IconName; entries: TimelineEntry[] 
           <div className="rounded-2xl border border-slate-100 bg-surface p-4 transition hover:bg-white hover:shadow-sm sm:p-5">
             <h3 className="text-base font-bold leading-7 text-ink sm:text-lg">{entry.title}</h3>
             <p className="mt-1 text-sm font-bold text-primary">{entry.period}</p>
-            <p className="mt-1 text-sm italic text-slate-500">{entry.place}</p>
+            {entry.place && <p className="mt-1 text-sm italic text-slate-500">{entry.place}</p>}
             {entry.description && <p className="mt-3 text-sm leading-7 text-slate-600">{entry.description}</p>}
           </div>
         </li>

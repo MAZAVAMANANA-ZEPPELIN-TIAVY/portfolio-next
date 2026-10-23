@@ -38,7 +38,8 @@ export type CvSection = {
 export type TimelineEntry = {
   title: string;
   period: string;
-  place: string;
+  /** Établissement ou contexte, affiché seulement s'il est rempli. */
+  place?: string;
   description?: string;
 };
 
@@ -48,6 +49,11 @@ export const education: CvSection & { entries: TimelineEntry[] } = {
   title: "Éducation",
   subtitle: "Parcours académique",
   entries: [
+    {
+      title: "DELF B1",
+      period: "2026",
+      description: "Diplôme d’études en langue française, niveau B1",
+    },
     {
       title: "Master d’Aptitude au Professorat – Ingénierie en Mathématiques et Informatique",
       period: "2023 – 2024",
