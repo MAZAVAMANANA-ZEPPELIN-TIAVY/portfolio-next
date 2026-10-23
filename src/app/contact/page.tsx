@@ -44,7 +44,7 @@ export default function ContactPage() {
             </ButtonLink>
 
             <ul className="mt-7 space-y-3">
-              {contactInfos.map(({ icon, label, value, href }) => {
+              {contactInfos.map(({ icon, label, value, href, external }) => {
                 const content = (
                   <>
                     <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-accent/15 text-cyan-300">
@@ -53,6 +53,7 @@ export default function ContactPage() {
                     <span className="min-w-0">
                       <span className="block text-sm text-slate-400">{label}</span>
                       <span className="mt-1 block break-all font-semibold text-white">{value}</span>
+                      {external && <span className="sr-only"> (nouvel onglet)</span>}
                     </span>
                   </>
                 );
@@ -61,6 +62,7 @@ export default function ContactPage() {
                     {href ? (
                       <a
                         href={href}
+                        {...(external && { target: "_blank", rel: "noopener noreferrer" })}
                         className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:bg-white/10"
                       >
                         {content}
@@ -74,18 +76,6 @@ export default function ContactPage() {
                 );
               })}
             </ul>
-
-            <div className="mt-7 rounded-2xl border border-white/10 bg-white/5 p-5">
-              <h3 className="text-sm font-bold text-white">{contactAside.benefitsTitle}</h3>
-              <ul className="mt-4 space-y-3">
-                {contactAside.benefits.map((benefit) => (
-                  <li key={benefit} className="flex items-center gap-3 text-sm font-medium text-slate-300">
-                    <Icon name="checkCircle" className="shrink-0 text-cyan-300" />
-                    {benefit}
-                  </li>
-                ))}
-              </ul>
-            </div>
 
             <SocialLinks className="mt-6" itemClassName="border border-white/10 bg-white/10 text-white hover:bg-primary" />
           </aside>

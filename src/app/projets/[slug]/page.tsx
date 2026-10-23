@@ -124,18 +124,6 @@ export default async function ProjectPage({ params }: PageProps<"/projets/[slug]
                 </li>
               ))}
             </ul>
-
-            <div className="mt-7 rounded-2xl bg-ink p-5 text-white">
-              <p className="text-sm font-black">{projectDetail.similarTitle}</p>
-              <p className="mt-2 text-sm leading-6 text-slate-300">{projectDetail.similarText}</p>
-              <Link
-                href="/contact"
-                className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-cyan-300 transition hover:gap-3"
-              >
-                {projectDetail.similarLink}
-                <Icon name="chevronRight" />
-              </Link>
-            </div>
           </aside>
 
           <section aria-labelledby="gallery-title">

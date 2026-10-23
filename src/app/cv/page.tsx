@@ -3,13 +3,11 @@ import { CvAnchorNav } from "@/components/cv/CvAnchorNav";
 import { BackgroundDecor } from "@/components/ui/BackgroundDecor";
 import { Badge } from "@/components/ui/Badge";
 import { ButtonLink } from "@/components/ui/Button";
-import { CtaBand } from "@/components/ui/CtaBand";
 import { Icon } from "@/components/ui/Icon";
 import { IconCard } from "@/components/ui/IconCard";
 import { Reveal } from "@/components/ui/Reveal";
 import {
   cvContactCards,
-  cvCta,
   cvHero,
   cvSections,
   education,
@@ -79,10 +77,23 @@ export default function CurriculumVitaePage() {
           </div>
         </section>
 
-        <div className="mb-8 grid gap-4 md:grid-cols-3">
+        {/* 1re colonne plus large : l'adresse email tient sur une ligne. */}
+        <div className="mb-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-[1.4fr_1fr_1fr_1fr]">
           {cvContactCards.map((card) => (
-            <IconCard key={card.label} variant="info" icon={card.icon} title={card.label}>
-              <span className="break-all">{card.value}</span>
+            <IconCard key={card.label} icon={card.icon} title={card.label}>
+              {card.href ? (
+                <a
+                  href={card.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="break-all underline-offset-4 transition hover:text-primary hover:underline"
+                >
+                  {card.value}
+                  <span className="sr-only"> (nouvel onglet)</span>
+                </a>
+              ) : (
+                <span className="break-all">{card.value}</span>
+              )}
             </IconCard>
           ))}
         </div>
@@ -163,15 +174,6 @@ export default function CurriculumVitaePage() {
             </Card>
           </div>
         </div>
-
-        <Reveal className="mt-8">
-          <CtaBand tone="night" size="md" eyebrow={cvCta.eyebrow} title={cvCta.title} description={cvCta.description}>
-            <ButtonLink href="/contact" variant="white" size="base">
-              {cvCta.button}
-              <Icon name="arrowRight" />
-            </ButtonLink>
-          </CtaBand>
-        </Reveal>
       </div>
     </div>
   );

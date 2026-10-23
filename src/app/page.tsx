@@ -4,24 +4,10 @@ import { FeaturedProjectCard } from "@/components/projects/FeaturedProjectCard";
 import { Badge } from "@/components/ui/Badge";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { CtaBand } from "@/components/ui/CtaBand";
 import { Icon } from "@/components/ui/Icon";
-import { IconCard } from "@/components/ui/IconCard";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { SocialLinks } from "@/components/ui/SocialLinks";
-import {
-  commitments,
-  commitmentsSection,
-  finalCta,
-  hero,
-  processSection,
-  processSteps,
-  projectsSection,
-  services,
-  servicesSection,
-  stats,
-} from "@/data/home";
+import { hero, processSection, processSteps, projectsSection, stats } from "@/data/home";
 import { featuredProjects, projects, realizedProjectsCount } from "@/data/projects";
 import { contact, cvPath, seo, site, siteUrl, socials } from "@/data/site";
 import { pageMetadata } from "@/lib/metadata";
@@ -156,43 +142,6 @@ export default function Home() {
         </dl>
       </section>
 
-      <section aria-labelledby="services-title">
-        <Container className="py-20 lg:py-28">
-          <Reveal>
-            <SectionHeading
-              id="services-title"
-              eyebrow={servicesSection.eyebrow}
-              title={servicesSection.title}
-              description={servicesSection.description}
-            />
-          </Reveal>
-
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {services.map((service, index) => (
-              <Reveal key={service.title} delay={index * 100}>
-                <IconCard
-                  variant="feature"
-                  index={index}
-                  icon={service.icon}
-                  title={service.title}
-                  description={service.description}
-                  className="h-full"
-                >
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-2 text-sm font-bold text-primary transition group-hover:gap-3"
-                  >
-                    {servicesSection.linkLabel}
-                    <span className="sr-only"> : {service.title}</span>
-                    <Icon name="arrowRight" />
-                  </Link>
-                </IconCard>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
-
       <section aria-labelledby="process-title" className="bg-ink py-20 text-white lg:py-28">
         <Container>
           <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
@@ -247,49 +196,6 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
-        </Container>
-      </section>
-
-      <section aria-labelledby="commitments-title" className="bg-surface-muted py-20 lg:py-24">
-        <Container>
-          <Reveal>
-            <SectionHeading
-              id="commitments-title"
-              eyebrow={commitmentsSection.eyebrow}
-              title={commitmentsSection.title}
-              description={commitmentsSection.description}
-            />
-          </Reveal>
-
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {commitments.map((item, index) => (
-              <Reveal key={item.title} delay={index * 100}>
-                <IconCard icon={item.icon} title={item.title} description={item.description} className="h-full" />
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section>
-        <Container className="py-20 lg:py-28">
-          <Reveal>
-            <CtaBand icon="layerGroup" title={finalCta.title} description={finalCta.description}>
-              <div className="flex flex-col justify-center gap-3 sm:flex-row">
-                <ButtonLink href="/contact" variant="white" size="xl">
-                  {finalCta.primary}
-                  <Icon name="arrowRight" />
-                </ButtonLink>
-                <ButtonLink href={contact.emailHref} variant="outlineLight" size="xl">
-                  {finalCta.secondary}
-                </ButtonLink>
-              </div>
-              <SocialLinks
-                className="mt-8 justify-center"
-                itemClassName="border border-white/20 bg-white/10 text-white hover:bg-ink"
-              />
-            </CtaBand>
-          </Reveal>
         </Container>
       </section>
     </div>

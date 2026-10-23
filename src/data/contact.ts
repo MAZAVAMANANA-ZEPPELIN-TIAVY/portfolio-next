@@ -3,9 +3,9 @@ import { contact, site } from "./site";
 
 export const contactHero = {
   badge: "Contact",
-  title: "Parlons de votre projet et de vos objectifs",
+  title: "Échangeons sur une opportunité ou une collaboration",
   description:
-    "Décrivez votre activité, le problème à résoudre ou le site que vous souhaitez créer. Même avec une idée encore simple, nous pouvons définir une première direction claire.",
+    "Une opportunité professionnelle, une proposition de collaboration ou une question sur mon parcours et mes projets : écrivez-moi via le formulaire, par email ou sur WhatsApp.",
 } as const;
 
 export const contactAside = {
@@ -14,56 +14,35 @@ export const contactAside = {
   description:
     "Vous pouvez utiliser le formulaire, m’écrire directement ou démarrer une conversation sur WhatsApp.",
   whatsapp: "Écrire sur WhatsApp",
-  benefitsTitle: "Ce que vous obtenez",
-  benefits: [
-    "Un échange clair sur votre besoin",
-    "Une proposition adaptée à votre activité",
-    "Un suivi régulier pendant le projet",
-  ],
 } as const;
 
-export const contactInfos: { icon: IconName; label: string; value: string; href?: string }[] = [
+/** Moyens de contact ; `external` ouvre le lien dans un nouvel onglet. */
+export const contactInfos: { icon: IconName; label: string; value: string; href?: string; external?: boolean }[] = [
   { icon: "email", label: "Email", value: contact.email, href: contact.emailHref },
   { icon: "phone", label: "Téléphone", value: contact.phone, href: contact.phoneHref },
+  { icon: "whatsapp", label: "WhatsApp", value: contact.whatsapp, href: contact.whatsappHref, external: true },
   { icon: "location", label: "Localisation", value: site.location },
 ];
 
-export const projectTypes = [
-  "Site vitrine",
-  "Application web",
-  "E-commerce",
-  "Refonte d’un site",
-  "Autre besoin",
-] as const;
-
-export const budgets = [
-  "À définir ensemble",
-  "Moins de 500 €",
-  "500 € – 1 000 €",
-  "1 000 € – 2 500 €",
-  "Plus de 2 500 €",
-] as const;
+export const subjects = ["Opportunité professionnelle", "Collaboration", "Question", "Autre"] as const;
 
 export const contactForm = {
-  eyebrow: "Demande de projet",
-  title: "Donnez-moi les informations essentielles",
-  description:
-    "Les champs concernant le type de projet et le budget permettent de préparer une réponse plus utile.",
+  eyebrow: "Formulaire de contact",
+  title: "Envoyez-moi un message",
+  description: "Précisez l’objet de votre message pour que je puisse vous répondre au mieux.",
   fields: {
     name: { label: "Nom complet", placeholder: "Votre nom" },
     email: { label: "Adresse email", placeholder: "vous@entreprise.com" },
     phone: { label: "Téléphone / WhatsApp", placeholder: "Optionnel" },
-    projectType: { label: "Type de projet" },
-    budget: { label: "Budget indicatif" },
+    subject: { label: "Objet" },
     message: {
-      label: "Votre besoin",
-      placeholder:
-        "Présentez votre activité, le résultat recherché, les fonctionnalités importantes et votre délai idéal...",
+      label: "Votre message",
+      placeholder: "Présentez-vous en quelques mots et précisez votre demande...",
     },
   },
   selectPlaceholder: "Sélectionner",
-  privacy: "Vos informations sont utilisées uniquement pour répondre à votre demande.",
-  submit: "Envoyer la demande",
+  privacy: "Vos informations sont utilisées uniquement pour répondre à votre message.",
+  submit: "Envoyer le message",
   sending: "Envoi en cours...",
   success: "Votre message a bien été envoyé. Merci !",
   error: "L’envoi a échoué. Vous pouvez aussi me contacter par email ou WhatsApp.",
@@ -73,9 +52,8 @@ export const contactForm = {
     name: "Indiquez votre nom (2 caractères minimum).",
     email: "Indiquez une adresse email valide.",
     phone: "Ce numéro ne semble pas valide.",
-    projectType: "Choisissez un type de projet.",
-    budget: "Choisissez un budget dans la liste.",
-    message: "Décrivez votre besoin en quelques mots (10 caractères minimum).",
+    subject: "Choisissez l’objet de votre message.",
+    message: "Écrivez votre message en quelques mots (10 caractères minimum).",
     tooLong: "Ce texte est trop long.",
   },
 } as const;

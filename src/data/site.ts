@@ -9,18 +9,23 @@ export const site = {
   jobTitle: "Développeur web full-stack",
   location: "Antsiranana, Madagascar",
   country: "Madagascar",
-  availability: "Disponible pour un projet",
+  availability: "Ouvert aux opportunités",
   description:
-    "Développeur web full-stack à Madagascar, je conçois des sites vitrines et applications modernes avec React, Laravel, Tailwind CSS et MySQL.",
+    "Développeur web full-stack à Madagascar, je conçois des sites et applications web modernes avec React, Laravel, Tailwind CSS et MySQL.",
 } as const;
+
+/** Numéro de téléphone et WhatsApp (format international, sans « + » ni espaces). Seul endroit où il est défini. */
+const phoneNumber = "261325572786";
+const phoneDisplay = "+261 32 55 727 86";
+const whatsappMessage = "Bonjour Zeppélin, je vous contacte depuis votre portfolio.";
 
 export const contact = {
   email: "zeppelintiavymazavamanana@gmail.com",
   emailHref: "mailto:zeppelintiavymazavamanana@gmail.com",
-  phone: "+261 32 55 727 86",
-  phoneHref: "tel:+261325572786",
-  whatsappHref:
-    "https://wa.me/261325572786?text=Bonjour%20Zepp%C3%A9lin%2C%20j%27aimerais%20discuter%20d%27un%20projet%20web.",
+  phone: phoneDisplay,
+  phoneHref: `tel:+${phoneNumber}`,
+  whatsapp: phoneDisplay,
+  whatsappHref: `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`,
 } as const;
 
 export const cvPath = "/cv/MAZAVAMANANA_Zeppelin_Tiavy_CV.pdf";
@@ -72,7 +77,7 @@ export const seo = {
   contact: {
     title: "Contact",
     description:
-      "Décrivez votre activité, le problème à résoudre ou le site que vous souhaitez créer : formulaire, email ou WhatsApp.",
+      "Contacter Zeppélin Tiavy, développeur web full-stack, pour une opportunité professionnelle, une collaboration ou une question : formulaire, email ou WhatsApp.",
   },
   notFound: { title: "Page introuvable" },
 } as const;
@@ -89,35 +94,21 @@ export const notFoundPage = {
 /** Textes du header (bouton et menu mobile). */
 export const header = {
   cvButton: "CV",
-  cta: "Parlons de votre projet",
+  cta: "Me contacter",
   mobileCv: "Télécharger le CV",
-  mobileCta: "Demander un devis",
+  mobileCta: "Me contacter",
 } as const;
 
 /** Textes du footer. */
 export const footer = {
-  cta: {
-    eyebrow: "Votre prochain projet",
-    title: "Besoin d’un site professionnel qui inspire confiance à vos clients ?",
-    description:
-      "Présentez-moi votre idée, votre activité et vos objectifs. Nous définirons une solution claire, moderne et adaptée à votre budget.",
-    primary: "Demander un devis",
-    whatsapp: "WhatsApp",
-  },
   about:
-    "Je conçois des sites vitrines et applications web modernes avec React, Laravel, Tailwind CSS et MySQL, pour aider les entreprises à mieux présenter et gérer leur activité.",
+    "Je conçois des sites et applications web modernes avec React, Laravel, Tailwind CSS et MySQL. Ce portfolio présente mon parcours et mes projets.",
   techs: ["React", "Laravel", "Tailwind CSS", "MySQL"],
   navigationTitle: "Navigation",
-  servicesTitle: "Services",
-  services: [
-    "Site vitrine professionnel",
-    "Application web métier",
-    "Interface React responsive",
-    "Backend Laravel et MySQL",
-  ],
   cvLink: "Télécharger mon CV",
   contactTitle: "Contact",
   emailLabel: "Email",
+  whatsappLabel: "WhatsApp",
   locationLabel: "Localisation",
   rights: "Tous droits réservés.",
   tagline: "Conçu pour être rapide, accessible et responsive.",

@@ -19,9 +19,11 @@ export const cvHero = {
     "Profil motivé, rigoureux et orienté résultat, avec expérience en développement web, travail en équipe agile et conception de solutions modernes.",
 } as const;
 
-export const cvContactCards: { icon: IconName; label: string; value: string }[] = [
+/** Cartes de contact ; `href` rend la valeur cliquable (ouverte dans un nouvel onglet). */
+export const cvContactCards: { icon: IconName; label: string; value: string; href?: string }[] = [
   { icon: "email", label: "Email", value: contact.email },
   { icon: "phone", label: "Téléphone", value: contact.phone },
+  { icon: "whatsapp", label: "WhatsApp", value: contact.whatsapp, href: contact.whatsappHref },
   { icon: "location", label: "Adresse", value: site.location },
 ];
 
@@ -182,11 +184,3 @@ export const qualities: CvSection & { items: string[] } = {
 
 /** Ordre de la navigation par ancres (D11). */
 export const cvSections: CvSection[] = [education, experience, skills, languages, hobbies, qualities];
-
-export const cvCta = {
-  eyebrow: "Collaboration",
-  title: "Mon profil correspond à votre besoin ?",
-  description:
-    "Je suis disponible pour échanger sur un site vitrine, une application web ou une mission de développement full-stack.",
-  button: "Me contacter",
-} as const;

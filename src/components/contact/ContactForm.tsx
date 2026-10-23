@@ -13,7 +13,7 @@ import {
 } from "@/app/contact/schema";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
-import { budgets, contactForm, projectTypes } from "@/data/contact";
+import { contactForm, subjects } from "@/data/contact";
 import { contact } from "@/data/site";
 import { SelectField, TextAreaField, TextField } from "./FormFields";
 
@@ -100,20 +100,13 @@ export function ContactForm() {
           autoComplete="tel"
         />
         <SelectField
-          {...field("projectType")}
-          label={fields.projectType.label}
-          options={projectTypes}
+          {...field("subject")}
+          label={fields.subject.label}
+          options={subjects}
           placeholder={contactForm.selectPlaceholder}
           required
         />
       </div>
-
-      <SelectField
-        {...field("budget")}
-        label={fields.budget.label}
-        options={budgets}
-        placeholder={contactForm.selectPlaceholder}
-      />
 
       <TextAreaField
         {...field("message")}

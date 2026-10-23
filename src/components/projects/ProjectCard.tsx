@@ -66,7 +66,7 @@ export function ProjectCard({ project, className = "", style }: ProjectCardProps
           ))}
         </ul>
 
-        <div className="mt-auto grid gap-3 pt-6 sm:grid-cols-2">
+        <div className={`mt-auto grid gap-3 pt-6 ${project.liveLink ? "sm:grid-cols-2" : ""}`}>
           <Link
             href={`/projets/${project.slug}`}
             className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-bold text-white shadow-md transition hover:-translate-y-0.5 hover:bg-primary"
@@ -76,7 +76,7 @@ export function ProjectCard({ project, className = "", style }: ProjectCardProps
             <span className="sr-only"> {project.title}</span>
           </Link>
 
-          {project.liveLink ? (
+          {project.liveLink && (
             <a
               href={project.liveLink}
               target="_blank"
@@ -87,14 +87,6 @@ export function ProjectCard({ project, className = "", style }: ProjectCardProps
               <span className="sr-only"> de {project.title} (nouvel onglet)</span>
               <Icon name="externalLink" />
             </a>
-          ) : (
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-surface px-5 py-3 text-sm font-bold text-slate-600 transition hover:border-primary-soft hover:bg-blue-50 hover:text-primary-strong"
-            >
-              {projectsPage.similarProject}
-              <Icon name="arrowRight" />
-            </Link>
           )}
         </div>
       </div>

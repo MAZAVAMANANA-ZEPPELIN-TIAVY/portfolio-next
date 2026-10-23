@@ -35,18 +35,17 @@ export async function sendContactMessage(_previous: ContactState, formData: Form
     return { status: "error" };
   }
 
-  const { name, email, phone, projectType, budget, message } = parsed.data;
+  const { name, email, phone, subject, message } = parsed.data;
   const rows: [string, string][] = [
     ["Nom", name],
     ["Email", email],
     ["Téléphone / WhatsApp", phone || "—"],
-    ["Type de projet", projectType],
-    ["Budget indicatif", budget || "—"],
+    ["Objet", subject],
   ];
 
-  const text = [...rows.map(([label, value]) => `${label} : ${value}`), "", "Besoin :", message].join("\n");
+  const text = [...rows.map(([label, value]) => `${label} : ${value}`), "", "Message :", message].join("\n");
   const html = `
-    <h2 style="font-family:sans-serif">Nouvelle demande de projet</h2>
+    <h2 style="font-family:sans-serif">Nouveau message depuis le portfolio</h2>
     <table style="font-family:sans-serif;border-collapse:collapse">
       ${rows
         .map(
@@ -55,7 +54,7 @@ export async function sendContactMessage(_previous: ContactState, formData: Form
         )
         .join("")}
     </table>
-    <h3 style="font-family:sans-serif">Besoin</h3>
+    <h3 style="font-family:sans-serif">Message</h3>
     <p style="font-family:sans-serif;white-space:pre-wrap">${escapeHtml(message)}</p>`;
 
   try {
@@ -63,7 +62,7 @@ export async function sendContactMessage(_previous: ContactState, formData: Form
       from: `Portfolio ${site.name} <${from}>`,
       to,
       replyTo: email,
-      subject: `Nouvelle demande de projet — ${name}`,
+      subject: `Portfolio : ${subject} — ${name}`,
       text,
       html,
     });

@@ -1,6 +1,8 @@
 # Portfolio — Zeppélin Tiavy
 
-Site portfolio de **MAZAVAMANANA Zeppélin Tiavy**, développeur web full-stack à Antsiranana (Madagascar) : accueil, CV, projets avec galerie, formulaire de contact.
+Portfolio personnel de **MAZAVAMANANA Zeppélin Tiavy**, développeur web full-stack à Antsiranana (Madagascar) : accueil, CV, projets avec galerie, formulaire de contact.
+
+Le site est **non commercial** (offre gratuite Vercel Hobby) : il présente un parcours et des projets, et sert à être contacté pour des opportunités. Il ne doit pas proposer de services, de devis ni de tarifs.
 
 Version Next.js du portfolio d'origine (Laravel + React, dossier `portfolio-zep/`), sans backend PHP ni base de données.
 
@@ -49,11 +51,11 @@ Tous les textes, liens et projets sont dans `src/data/` ; les pages ne contienne
 
 | Fichier | Contenu |
 |---|---|
-| `site.ts` | **`siteUrl`**, identité, email, téléphone, WhatsApp, réseaux, chemin du CV, navigation, header, footer, textes SEO, page 404 |
+| `site.ts` | **`siteUrl`**, identité, email, numéro de téléphone / WhatsApp (`phoneNumber`, défini une seule fois) et message WhatsApp prérempli, réseaux, chemin du CV, navigation, header, footer, textes SEO, page 404 |
 | `projects.ts` | les projets (slug, textes, stack, captures avec leurs dimensions, liens) et les textes des pages projets |
 | `home.ts` | page d'accueil |
 | `cv.ts` | page CV |
-| `contact.ts` | page contact, options du formulaire, messages de validation |
+| `contact.ts` | page contact, liste des objets du formulaire (`subjects`), messages de validation |
 | `icons.ts` | liste des noms d'icônes autorisés |
 
 - **Icônes** : les données utilisent des noms (`icon: "whatsapp"`). Pour une nouvelle icône, ajoutez le nom dans `src/data/icons.ts` puis l'icône react-icons correspondante dans `src/components/ui/Icon.tsx` (le build échoue si l'une des deux manque).
@@ -68,7 +70,7 @@ src/
                        sitemap.ts, robots.ts, opengraph-image.tsx, twitter-image.tsx, icon.svg
   app/contact/         actions.ts (Server Action), schema.ts (validation partagée)
   components/          Header, Footer, composants par page (cv/, projects/, contact/)
-  components/ui/       composants partagés (Button, Badge, CtaBand, Icon, Reveal…)
+  components/ui/       composants partagés (Button, Badge, Icon, IconCard, Reveal…)
   data/                contenu du site
   lib/                 metadata (SEO), image de partage
 public/                images, CV

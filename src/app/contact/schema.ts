@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { budgets, contactForm, projectTypes } from "@/data/contact";
+import { contactForm, subjects } from "@/data/contact";
 
 const { validation: v } = contactForm;
 
@@ -12,8 +12,7 @@ export const contactSchema = z.object({
     .trim()
     .max(30, v.tooLong)
     .regex(/^[+\d\s().-]*$/, v.phone),
-  projectType: z.enum(projectTypes, v.projectType),
-  budget: z.union([z.enum(budgets), z.literal("")], v.budget),
+  subject: z.enum(subjects, v.subject),
   message: z.string().trim().min(10, v.message).max(5000, v.tooLong),
 });
 
@@ -21,14 +20,13 @@ export type ContactValues = z.input<typeof contactSchema>;
 export type ContactField = keyof ContactValues;
 export type ContactErrors = Partial<Record<ContactField, string>>;
 
-export const contactFields: ContactField[] = ["name", "email", "phone", "projectType", "budget", "message"];
+export const contactFields: ContactField[] = ["name", "email", "phone", "subject", "message"];
 
 export const emptyContactValues: ContactValues = {
   name: "",
   email: "",
   phone: "",
-  projectType: "" as ContactValues["projectType"],
-  budget: "",
+  subject: "" as ContactValues["subject"],
   message: "",
 };
 

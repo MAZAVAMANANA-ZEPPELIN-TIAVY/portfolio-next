@@ -13,7 +13,6 @@ export type IconName =
   | "close"
   | "checkCircle"
   | "paperPlane"
-  | "layerGroup"
   // Projets
   | "folderOpen"
   | "check"
@@ -34,13 +33,10 @@ export type IconName =
   | "facebook"
   | "linkedin"
   | "github"
-  // Accueil
+  // Compétences
   | "laptopCode"
   | "code"
   | "database"
-  | "mobile"
-  | "search"
-  | "shield"
   // CV
   | "userGraduate"
   | "graduationCap"

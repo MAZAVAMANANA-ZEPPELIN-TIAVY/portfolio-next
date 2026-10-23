@@ -182,9 +182,6 @@ export const projectDetail = {
   },
   highlightsEyebrow: "Points clés",
   highlightsTitle: "Ce que présente ce projet",
-  similarTitle: "Vous avez un besoin similaire ?",
-  similarText: "Je peux adapter cette logique à votre activité, vos utilisateurs et vos objectifs.",
-  similarLink: "Discuter du projet",
   galleryEyebrow: "Aperçu",
   galleryTitle: "Captures du projet",
   galleryHint: "Cliquez sur une image pour l’agrandir",
@@ -233,12 +230,4 @@ export const projectsPage = {
   allCategories: "Tous",
   viewProject: "Voir le projet",
   liveSite: "Site en ligne",
-  similarProject: "Projet similaire",
-  cta: {
-    eyebrow: "Un besoin particulier ?",
-    title: "Transformons votre besoin en une solution web professionnelle",
-    description:
-      "Site vitrine, application métier, plateforme de réservation, e-commerce ou système de gestion : discutons de votre projet.",
-    button: "Présenter mon projet",
-  },
 } as const;

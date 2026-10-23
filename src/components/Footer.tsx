@@ -2,7 +2,6 @@ import { cacheLife } from "next/cache";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { contact, cvPath, footer, navItems, site } from "@/data/site";
-import { FooterCtaGate } from "./FooterCtaGate";
 import { Icon } from "./ui/Icon";
 import { SocialLinks } from "./ui/SocialLinks";
 
@@ -22,39 +21,7 @@ export function Footer() {
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 pb-8 pt-12 sm:px-6 lg:px-8">
-        <FooterCtaGate>
-          <div className="mb-14 grid gap-8 overflow-hidden rounded-[2rem] border border-white/10 bg-linear-to-r from-primary-strong via-primary to-accent-end px-6 py-9 shadow-2xl sm:px-8 lg:grid-cols-[1fr_auto] lg:items-center lg:px-10">
-            <div>
-              <p className="text-sm font-bold uppercase tracking-[0.2em] text-blue-100">{footer.cta.eyebrow}</p>
-              <h2 className="mt-3 max-w-2xl text-2xl font-black tracking-tight text-white sm:text-3xl">
-                {footer.cta.title}
-              </h2>
-              <p className="mt-3 max-w-2xl text-sm leading-7 text-blue-50 sm:text-base">{footer.cta.description}</p>
-            </div>
-
-            <div className="flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 font-bold text-ink transition hover:-translate-y-0.5 hover:bg-cyan-100"
-              >
-                {footer.cta.primary}
-                <Icon name="arrowRightOutline" size={19} />
-              </Link>
-
-              <a
-                href={contact.whatsappHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3 font-bold text-white transition hover:bg-white/20"
-              >
-                <Icon name="whatsapp" size={19} />
-                {footer.cta.whatsapp}
-              </a>
-            </div>
-          </div>
-        </FooterCtaGate>
-
-        <div className="grid gap-10 lg:grid-cols-[1.35fr_0.7fr_0.85fr_1.1fr]">
+        <div className="grid gap-10 lg:grid-cols-[1.35fr_0.85fr_1.1fr]">
           <div>
             <Link href="/" className="group inline-flex items-center gap-3 rounded-2xl">
               <span
@@ -103,15 +70,6 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </nav>
-
-          <div>
-            <FooterTitle>{footer.servicesTitle}</FooterTitle>
-            <ul className="space-y-3 text-sm text-slate-400">
-              {footer.services.map((service) => (
-                <li key={service}>{service}</li>
-              ))}
-            </ul>
 
             <a
               href={cvPath}
@@ -122,7 +80,7 @@ export function Footer() {
               <Icon name="download" size={18} />
               {footer.cvLink}
             </a>
-          </div>
+          </nav>
 
           <div>
             <FooterTitle>{footer.contactTitle}</FooterTitle>
@@ -135,6 +93,20 @@ export function Footer() {
                 <span className="min-w-0">
                   <span className="block font-semibold text-white">{footer.emailLabel}</span>
                   <span className="block break-all text-slate-400">{contact.email}</span>
+                </span>
+              </a>
+
+              <a
+                href={contact.whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:bg-white/10"
+              >
+                <Icon name="whatsapp" className="mt-0.5 shrink-0 text-blue-400" size={20} />
+                <span className="min-w-0">
+                  <span className="block font-semibold text-white">{footer.whatsappLabel}</span>
+                  <span className="block text-slate-400">{contact.whatsapp}</span>
+                  <span className="sr-only"> (nouvel onglet)</span>
                 </span>
               </a>
 
