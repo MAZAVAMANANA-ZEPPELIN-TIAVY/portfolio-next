@@ -47,6 +47,8 @@ import {
   HiOutlineMenuAlt3,
   HiOutlineX,
 } from "react-icons/hi";
+// Simple Icons : Font Awesome n'a pas de logo Next.js.
+import { SiNextdotjs } from "react-icons/si";
 import type { IconName } from "@/data/icons";
 
 /** Table typée : un nom ajouté à IconName sans icône ici fait échouer le build. */
@@ -90,6 +92,7 @@ const icons: Record<IconName, IconType> = {
   html5: FaHtml5,
   css3: FaCss3Alt,
   react: FaReact,
+  nextjs: SiNextdotjs,
   php: FaPhp,
   laravel: FaLaravel,
   git: FaGitAlt,

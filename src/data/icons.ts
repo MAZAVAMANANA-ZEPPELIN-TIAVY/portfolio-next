@@ -48,6 +48,7 @@ export type IconName =
   | "html5"
   | "css3"
   | "react"
+  | "nextjs"
   | "php"
   | "laravel"
   | "git"

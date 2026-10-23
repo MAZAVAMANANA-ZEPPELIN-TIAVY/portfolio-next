@@ -118,6 +118,7 @@ export const skills: CvSection & { blocks: SkillBlock[] } = {
         { name: "CSS", icon: "css3" },
         { name: "Tailwind CSS" },
         { name: "React", icon: "react" },
+        { name: "Next.js", icon: "nextjs" },
         { name: "PHP", icon: "php" },
         { name: "Laravel", icon: "laravel" },
         { name: "Git / GitHub", icon: "git" },
