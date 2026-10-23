@@ -11,6 +11,7 @@ Version Next.js du portfolio d'origine (Laravel + React, dossier `portfolio-zep/
 - [Next.js 16](https://nextjs.org) (App Router, pages statiques, `cacheComponents`), React 19, TypeScript
 - Tailwind CSS 4, police Instrument Sans (`next/font`)
 - Icônes : `react-icons`
+- Barre de chargement : [`nprogress`](https://github.com/rstacruz/nprogress) (changements de page et envoi du formulaire)
 - Formulaire : Server Action + [Resend](https://resend.com) + validation [zod](https://zod.dev)
 - Hébergement prévu : [Vercel](https://vercel.com)
 
@@ -90,5 +91,6 @@ Avec un nom de domaine plus tard : l'ajouter dans *Settings → Domains*, mettre
 
 - `cacheComponents` est activé : `new Date()` ou une lecture de fichier dans un composant serveur doivent être placés dans une fonction `"use cache"` (voir l'année du footer et `src/lib/social-image.tsx`).
 - Les pages sont revalidées une fois par jour (année du copyright).
+- Barre de chargement : le début d'une navigation est signalé par `onRouterTransitionStart` dans `src/instrumentation-client.ts` ; `src/components/NavigationProgress.tsx` affiche la barre seulement si la page change et la termine à l'arrivée ; `src/lib/progress.ts` configure NProgress (sans cercle, sans rôles ARIA, `aria-hidden`) ; styles dans `globals.css`.
 - Un slug de projet inconnu affiche « Projet introuvable » avec `noindex`, mais répond en 200 (limite du rendu en streaming de `cacheComponents`) ; les autres URL inconnues répondent en 404.
 - `AGENTS.md` est généré par Next.js : il rappelle de lire la documentation locale `node_modules/next/dist/docs/` (Next 16 diffère des versions précédentes).

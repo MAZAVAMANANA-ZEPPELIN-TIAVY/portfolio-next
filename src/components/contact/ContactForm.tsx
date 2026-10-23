@@ -1,6 +1,14 @@
 "use client";
 
-import { startTransition, useActionState, useRef, useState, type ChangeEvent, type FormEvent } from "react";
+import {
+  startTransition,
+  useActionState,
+  useEffect,
+  useRef,
+  useState,
+  type ChangeEvent,
+  type FormEvent,
+} from "react";
 import { sendContactMessage } from "@/app/contact/actions";
 import {
   contactFields,
@@ -15,6 +23,7 @@ import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { contactForm, subjects } from "@/data/contact";
 import { contact } from "@/data/site";
+import { doneProgress, startProgress } from "@/lib/progress";
 import { SelectField, TextAreaField, TextField } from "./FormFields";
 
 const { fields } = contactForm;
@@ -34,6 +43,13 @@ export function ContactForm() {
     setTouched({});
     return result;
   }, { status: "idle" });
+
+  // Barre de chargement pendant l'envoi, comme NProgress dans l'original.
+  useEffect(() => {
+    if (!pending) return;
+    startProgress();
+    return doneProgress;
+  }, [pending]);
 
   const clientErrors = validateContact(values);
   const serverErrors: ContactErrors = state.status === "invalid" ? state.errors : {};

@@ -87,6 +87,37 @@
   animation: card-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) backwards;
 }
 
+/*
+ * Barre de chargement (NProgress, src/lib/progress.ts) : vert #22c55e et 4 px comme l'original, sans cercle.
+ * Reprend nprogress.css (non importé, il contient le cercle). Elle ne capte aucun clic.
+ */
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1031;
+  width: 100%;
+  height: 4px;
+  background: #22c55e;
+}
+
+#nprogress .peg {
+  position: absolute;
+  right: 0;
+  display: block;
+  width: 100px;
+  height: 100%;
+  box-shadow:
+    0 0 10px #22c55e,
+    0 0 5px #22c55e;
+  opacity: 1;
+  transform: rotate(3deg) translate(0, -4px);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
