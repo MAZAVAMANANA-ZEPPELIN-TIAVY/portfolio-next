@@ -27,7 +27,7 @@ export const stats = {
   realizedLabel: "projets réels réalisés",
   others: [
     { value: "Full-stack", label: "frontend, backend et base de données" },
-    { value: "Madagascar", label: "collaboration locale ou à distance" },
+    { value: "Madagascar", label: "Basé à Antsiranana" },
   ],
 } as const;
 
@@ -68,4 +68,14 @@ export const projectsSection = {
   allLink: "Voir tous les projets",
   cardLink: "Découvrir le projet",
   demoBadge: "Démonstration",
+} as const;
+
+/** Bandeau de contact en fin d'accueil (uniquement sur cette page). */
+export const contactBand = {
+  // Espace insécable avant « ? » : le point d'interrogation ne passe jamais seul à la ligne.
+  title: "Envie d’échanger ?",
+  description:
+    "Une opportunité professionnelle, une collaboration ou une question sur mes projets : écrivez-moi ou téléchargez mon CV pour découvrir mon parcours.",
+  contact: "Me contacter",
+  cv: "Télécharger mon CV",
 } as const;

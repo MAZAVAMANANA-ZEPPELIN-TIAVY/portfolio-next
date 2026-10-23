@@ -7,7 +7,7 @@ import { Container } from "@/components/ui/Container";
 import { Icon } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { hero, processSection, processSteps, projectsSection, stats } from "@/data/home";
+import { contactBand, hero, processSection, processSteps, projectsSection, stats } from "@/data/home";
 import { featuredProjects, projects, realizedProjectsCount } from "@/data/projects";
 import { contact, cvPath, seo, site, siteUrl, socials } from "@/data/site";
 import { pageMetadata } from "@/lib/metadata";
@@ -196,6 +196,29 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
+        </Container>
+      </section>
+
+      <section aria-labelledby="contact-band-title">
+        <Container className="pb-20 lg:pb-28">
+          <Reveal>
+            <div className="rounded-[2rem] bg-linear-to-br from-primary-strong via-primary to-accent-end px-4 py-12 text-center text-white shadow-2xl sm:px-10 lg:px-16 lg:py-16">
+              <h2 id="contact-band-title" className="mx-auto max-w-3xl text-3xl font-black tracking-tight sm:text-4xl">
+                {contactBand.title}
+              </h2>
+              <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-blue-50">{contactBand.description}</p>
+              <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+                <ButtonLink href="/contact" variant="white" size="xl">
+                  {contactBand.contact}
+                  <Icon name="arrowRight" />
+                </ButtonLink>
+                <ButtonLink href={cvPath} external variant="outlineLight" size="xl">
+                  <Icon name="download" size={19} />
+                  {contactBand.cv}
+                </ButtonLink>
+              </div>
+            </div>
+          </Reveal>
         </Container>
       </section>
     </div>

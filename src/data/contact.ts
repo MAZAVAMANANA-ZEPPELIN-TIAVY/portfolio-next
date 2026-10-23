@@ -32,7 +32,7 @@ export const contactForm = {
   description: "Précisez l’objet de votre message pour que je puisse vous répondre au mieux.",
   fields: {
     name: { label: "Nom complet", placeholder: "Votre nom" },
-    email: { label: "Adresse email", placeholder: "vous@entreprise.com" },
+    email: { label: "Adresse email", placeholder: "vous@exemple.com" },
     phone: { label: "Téléphone / WhatsApp", placeholder: "Optionnel" },
     subject: { label: "Objet" },
     message: {
