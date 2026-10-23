@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { ReactNode } from "react";
 import { CvAnchorNav } from "@/components/cv/CvAnchorNav";
 import { BackgroundDecor } from "@/components/ui/BackgroundDecor";
@@ -216,6 +217,16 @@ function Timeline({ icon, entries }: { icon: IconName; entries: TimelineEntry[] 
             <p className="mt-1 text-sm font-bold text-primary">{entry.period}</p>
             {entry.place && <p className="mt-1 text-sm italic text-slate-500">{entry.place}</p>}
             {entry.description && <p className="mt-3 text-sm leading-7 text-slate-600">{entry.description}</p>}
+            {entry.link && (
+              <Link
+                href={entry.link.href}
+                className="mt-3 inline-flex items-center gap-2 text-sm font-bold text-primary transition hover:gap-3"
+              >
+                {entry.link.label}
+                <span className="sr-only"> : {entry.title}</span>
+                <Icon name="arrowRight" />
+              </Link>
+            )}
           </div>
         </li>
       ))}

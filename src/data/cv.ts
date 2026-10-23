@@ -1,4 +1,5 @@
 import type { IconName } from "./icons";
+import { formatProjectPeriod, projectsByDate, projectsPage } from "./projects";
 import { contact, site } from "./site";
 
 const heroPills: { icon: IconName; label: string }[] = [
@@ -41,6 +42,8 @@ export type TimelineEntry = {
   /** Établissement ou contexte, affiché seulement s'il est rempli. */
   place?: string;
   description?: string;
+  /** Lien interne affiché sous la description (page d'un projet). */
+  link?: { href: string; label: string };
 };
 
 export const education: CvSection & { entries: TimelineEntry[] } = {
@@ -72,25 +75,29 @@ export const education: CvSection & { entries: TimelineEntry[] } = {
   ],
 };
 
+/** Projets de la page Projets, générés depuis projects.ts : un projet ajouté apparaît automatiquement. */
+const projectEntries: TimelineEntry[] = projectsByDate.map((project) => ({
+  title: project.title,
+  period: formatProjectPeriod(project.period),
+  place: project.category,
+  description: project.shortDescription,
+  link: { href: `/projets/${project.slug}`, label: projectsPage.viewProject },
+}));
+
 export const experience: CvSection & { entries: TimelineEntry[] } = {
   id: "experience",
   icon: "briefcase",
   title: "Expérience",
   subtitle: "Expérience professionnelle",
+  // Du plus récent au plus ancien : les projets (tous postérieurs au stage), puis le stage de 2024.
   entries: [
+    ...projectEntries,
     {
       title: "Développeur web stagiaire – MADA-Digital",
       period: "Août 2024 – Décembre 2024",
       place: "MADA-Digital",
       description:
         "Travail en équipe agile et participation au développement d’une application de gestion des salariés avec Laravel, Bootstrap et JavaScript.",
-    },
-    {
-      title: "Développeur web – ObayaMadaTour",
-      period: "Février 2025",
-      place: "Projet web touristique",
-      description:
-        "Conception et développement d’un site touristique moderne pour mettre en valeur les destinations, circuits, services et expériences proposés par ObayaMadaTour, avec une interface attractive, responsive et une intégration de technologies comme Laravel, React et Tailwind CSS.",
     },
   ],
 };

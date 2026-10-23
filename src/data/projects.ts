@@ -1,11 +1,17 @@
 /** Capture d'écran avec ses dimensions réelles (next/image). */
 export type ProjectImage = { src: string; width: number; height: number };
 
+/** Période de réalisation en mois, au format « AAAA-MM » ; `end` absent = un seul mois. */
+export type ProjectPeriod = { start: string; end?: string };
+
 export type Project = {
   slug: string;
   title: string;
   category: string;
+  /** Année affichée (cartes, page détail) : doit correspondre à `period`. */
   year: string;
+  /** Section Expérience du CV (libellé et tri du plus récent au plus ancien). */
+  period: ProjectPeriod;
   client: string;
   role: string;
   status: string;
@@ -27,7 +33,8 @@ export const projects: Project[] = [
     slug: "obayamadatour",
     title: "ObayaMadaTour",
     category: "Site touristique",
-    year: "2025",
+    year: "2026",
+    period: { start: "2026-02" },
     client: "ObayaMadaTour",
     role: "Conception et développement",
     status: "Projet réalisé",
@@ -56,7 +63,8 @@ export const projects: Project[] = [
     slug: "maboutique",
     title: "MaBoutique",
     category: "E-commerce",
-    year: "2025",
+    year: "2026",
+    period: { start: "2026-03", end: "2026-04" },
     client: "Boutique de téléphones",
     role: "Conception et développement full-stack",
     status: "Projet réalisé",
@@ -84,7 +92,8 @@ export const projects: Project[] = [
     slug: "autoloc",
     title: "AutoLoc",
     category: "Location de voitures",
-    year: "2025",
+    year: "2026",
+    period: { start: "2026-05" },
     client: "AutoLoc Nosy Be",
     role: "Conception et développement full-stack",
     status: "Projet réalisé",
@@ -112,7 +121,8 @@ export const projects: Project[] = [
     slug: "erp-scolaire-ape",
     title: "ERP scolaire A.P.E.",
     category: "Plateforme éducative",
-    year: "2025",
+    year: "2026",
+    period: { start: "2026-06", end: "2026-07" },
     client: "Lycée privé A.P.E.",
     role: "Architecture et développement full-stack",
     status: "Projet réalisé",
@@ -150,6 +160,38 @@ export const realizedProjectsCount = projects.filter((project) => !project.isDem
 
 /** Catégories uniques, dans l'ordre d'apparition. */
 export const projectCategories = [...new Set(projects.map((project) => project.category))];
+
+const monthNames = [
+  "Janvier",
+  "Février",
+  "Mars",
+  "Avril",
+  "Mai",
+  "Juin",
+  "Juillet",
+  "Août",
+  "Septembre",
+  "Octobre",
+  "Novembre",
+  "Décembre",
+];
+
+function formatMonth(value: string) {
+  const [year, month] = value.split("-");
+  return `${monthNames[Number(month) - 1]} ${year}`;
+}
+
+/** « Février 2026 » ou « Mars 2026 – Avril 2026 » (même format que le stage du CV). */
+export function formatProjectPeriod({ start, end }: ProjectPeriod) {
+  return end && end !== start ? `${formatMonth(start)} – ${formatMonth(end)}` : formatMonth(start);
+}
+
+/** Projets du plus récent au plus ancien (fin de période, puis début), pour la section Expérience du CV. */
+export const projectsByDate = [...projects].sort(
+  (a, b) =>
+    (b.period.end ?? b.period.start).localeCompare(a.period.end ?? a.period.start) ||
+    b.period.start.localeCompare(a.period.start),
+);
 
 /** Projets précédent et suivant (en boucle), pour la navigation en bas de page (D12). */
 export function getAdjacentProjects(slug: string) {
