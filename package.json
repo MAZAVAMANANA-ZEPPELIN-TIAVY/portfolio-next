@@ -12,7 +12,7 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "next": "16.4.2",
+    "next": "16.4.5",
     "nprogress": "^0.2.0",
     "react": "19.3.0",
     "react-dom": "19.3.0",
